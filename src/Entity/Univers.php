@@ -6,9 +6,9 @@ use App\Repository\UniverRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=UniverRepository::class)
+ * @ORM\Entity(repositoryClass=UniversRepository::class)
  */
-class Univer
+class Univers
 {
     /**
      * @ORM\Id
