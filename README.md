@@ -1,5 +1,17 @@
 #-----HELP
+Commande a effectuer pour que webpack/bootstap fonctionne 
 
+composer require symfony/webpack-encore-bundle
+
+npm i
+
+npm i sass-loader node-sass --save-dev
+
+npm i postcss autoprefixer --dev
+
+npm i bootstrap
+
+npm run build
 
 
 #-----START
