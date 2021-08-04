@@ -27,33 +27,44 @@ class PostController extends AbstractController
       /**
      * @Route("/post/add", name="post_add")
      */
-    public function add(Request $request): Response
+    public function post(Request $request): Response
     {
         $post = new Post();
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // $post->setCreatedDate(new \DateTimeInterface);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($post);
             $entityManager->flush();
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('post');
         }
 
         return $this->render('post/_form.html.twig', [
             'controller_name' => 'PostController',
-            'form' => $form->createView()
+            'formPost' => $form->createView()
         ]);
     }
   /**
-     * @Route("/post/modify", name="post_modify")
+     * @Route("/post/{id}/modify", name="post_modify")
      */
 
-    public function modify(): Response
+    public function modify(Request $request, Post $post): Response
     {
-        return $this->render('post/modify.html.twig', [
+        $form = $this->createForm(PostType::class, $post);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('post');
+        }
+
+        return $this->render('post/_form.html.twig', [
             'controller_name' => 'PostController',
+            'formPost' => $form->createView()
         ]);
     }
     

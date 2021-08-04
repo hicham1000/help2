@@ -1,4 +1,33 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{{ form_start(formPost) }}
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+                <h2 class="my-3">Ajout d'article</h2>
+                <div class="form-group">
+                    <label for="" class="ml-3">Titre</label>
+                        {{ form_widget(formPost.title) }}
+                    <label for="" class="ml-3">Mots clés</label>   
+                        {{ form_widget(formPost.keyword) }}
+                    <label for="" class="ml-3">Contenu</label>   
+                        {{ form_widget(formPost.content) }}
+                    <label for="" class="ml-3">Date de création</label>
+                    {{ form_widget(formPost.created_date) }}
+                    <label for="" class="ml-3">date d'obsolèsence</label> 
+                    {{ form_widget(formPost.obsoleted_date) }}                  
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-dark m-3" type="submit">{{ button_label|default('Save') }}</button>
+                </div>
+        </div>
+    </div>
+{{ form_end(formPost) }}
+
+{% endblock %}
+
+
+
+{# {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button> #}
