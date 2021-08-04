@@ -19,7 +19,14 @@
                     {{ form_widget(formPost.obsoleted_date) }}                  
                 </div>
                 <div class="text-center">
-                    <button class="btn btn-dark m-3" type="submit">{{ button_label|default('Save') }}</button>
+                    <button class="btn btn-dark m-3" type="submit">
+                        {% if editMode %}
+                            Modifier
+                        {% else %}
+                            Ajouter 
+                        {% endif %}
+                    </button>
+                    <a class="btn btn-dark m-3" href="{{ path('post') }}">Annuler</a>
                 </div>
         </div>
     </div>
@@ -30,4 +37,6 @@
 
 
 {# {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button> #}
+    {{ button_label|default('Save') }}
+    <button class="btn">{{ button_label|default('Save') }}</button> 
+#}

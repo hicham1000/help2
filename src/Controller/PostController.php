@@ -44,7 +44,8 @@ class PostController extends AbstractController
 
         return $this->render('post/_form.html.twig', [
             'controller_name' => 'PostController',
-            'formPost' => $form->createView()
+            'formPost' => $form->createView(),
+            'editMode' => $post->getId() !== null
         ]);
     }
   /**
@@ -64,7 +65,8 @@ class PostController extends AbstractController
 
         return $this->render('post/_form.html.twig', [
             'controller_name' => 'PostController',
-            'formPost' => $form->createView()
+            'formPost' => $form->createView(), 
+            'editMode' => $post->getId() !== null
         ]);
     }
     
