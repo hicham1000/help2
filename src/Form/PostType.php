@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Post;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,8 +26,16 @@ class PostType extends AbstractType
                     'class' => 'form-control mb-3'
                 ]
             ])
-            ->add('created_date')
-            ->add('obsoleted_date')
+            ->add('created_date', DateType::class, [
+                'attr' => [
+                    'class' => 'd-none'
+                ]
+            ])
+            ->add('obsoleted_date', DateType::class, [
+                'attr' => [
+                    'class' => 'd-none'
+                ]
+            ])
             ->add('keyword', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Mots clés',
