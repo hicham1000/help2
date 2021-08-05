@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\UniverRepository;
+use App\Repository\UniversRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
