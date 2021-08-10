@@ -8,6 +8,11 @@
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.scss';
 
+
+// import de quil.js 
+// import '../node_modules/quill/quill';
+// import '../node_modules/quill/dist/quill';
+
 import { Tooltip, Toast, Popover } from 'bootstrap';
 
 
