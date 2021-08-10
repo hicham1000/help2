@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PostRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -90,8 +91,9 @@ class Post
 
     public function setObsoletedDate(\DateTimeInterface $obsoleted_date): self
     {
+        $obsoleted_date = new DateTime();
+        $obsoleted_date->modify('+6 month');
         $this->obsoleted_date = $obsoleted_date;
-
         return $this;
     }
 
