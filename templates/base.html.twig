@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        
-        {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {# <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet"> #}
 
-        {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
-    </head>
-    <body>
-    <header>
-        <nav class="navbar navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{{ path('home') }}">
-                HELP
-                </a>
-                <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-light me-2" type="submit">Search</button>
-                <div class=" dropdown">
-                    <button class="btn btn-outline-light me-2 dropdown-toggle" type="button"
-                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        Contexte
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li class="dropdown-item"> exemple 1 </li>
-                        <li class="dropdown-item">exemple 2 </li>
-                        <li class="dropdown-item"> exemple 3 </li>
-                    </ul>
-                </div>}
-                </form>
-                <div class="">
+    {% block stylesheets %}{{ encore_entry_link_tags('app') }}{% endblock %}
+    {% block javascripts %}{{ encore_entry_script_tags('app') }}{% endblock %}
+</head>
+<header>
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{{ path('home') }}">
+            HELP
+            </a>
+            <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-light me-2" type="submit">Search</button>
+            <div class=" dropdown">
+                <button class="btn btn-outline-light me-2 dropdown-toggle" type="button"
+                    id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Contexte
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li class="dropdown-item"> exemple 1 </li>
+                    <li class="dropdown-item">exemple 2 </li>
+                    <li class="dropdown-item"> exemple 3 </li>
+                </ul>
+            </div>
+            </form>
+            <div class="block-btn">
 
                 <button type="button" class="btn btn-sm" name="monCompte">
                     <svg width="25" height="25" fill="white" class="bi bi-person-square" viewBox="0 0 16 16">
@@ -62,12 +62,11 @@
                         </svg>
                     </button>
                 </a>
-                </div>
             </div>
-        </nav>
-    </header>
-        {% block body %}
-            
-        {% endblock %}
-    </body>
+        </div>
+    </nav>
+</header>
+{% block body %}
+{% endblock %}
+
 </html>

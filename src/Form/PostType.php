@@ -26,11 +26,15 @@ class PostType extends AbstractType
                     'class' => 'form-control mb-3'
                 ]
             ])
-            ->add('created_date', DateType::class, [
-                'attr' => [
-                    'class' => 'd-none'
-                ]
-            ])
+
+            // ******************  EN AJOUTANT QUILL
+
+            // ->add('content', TextareaType::class, [
+            //     'attr' => [
+            //         'class' => 'form-control mb-3 editor'
+            //     ]
+            // ])
+            
             ->add('obsoleted_date', DateType::class, [
                 'attr' => [
                     'class' => 'd-none'
