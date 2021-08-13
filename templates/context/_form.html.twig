@@ -1,0 +1,10 @@
+
+{{ form_start(form) }}
+
+        <div class="form-group">
+            <label for="label" class="ml-3">Label</label>
+                {{ form_widget(form.label) }}
+        </div>
+        <button class="btn btn-light btn-outline-dark mb-2">{{ button_label|default('Sauvegarder') }}</button>
+
+{{ form_end(form) }}

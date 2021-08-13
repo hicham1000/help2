@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Context{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Création d'un nouveau Context</h1>
+
+    {{ include('context/_form.html.twig') }}
+
+    <a class="btn btn-light btn-outline-dark me-2" href="{{ path('context_index') }}">Retour</a>
+</div>
+{% endblock %}
+

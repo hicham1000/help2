@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Univers{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Edit Univers</h1>
+
+        {{ include('univers/_form.html.twig') }}
+        <div class="d-flex">
+            <a class="btn btn-light btn-outline-dark me-2" href="{{ path('univers_index') }}">Retour</a>
+
+            {{ include('univers/_delete_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}
