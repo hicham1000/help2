@@ -3,11 +3,14 @@
 {% block title %}Edit Appuser{% endblock %}
 
 {% block body %}
-    <h1>Edit Appuser</h1>
+    <div class="container">
+        <h1>Modifier l'utilisateur</h1>
 
-    {{ include('appuser/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('appuser/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+        <div class="d-flex">
+            <a class="btn btn-light btn-outline-dark me-2" href="{{ path('appuser_index') }}">Retour</a>
 
-    <a href="{{ path('appuser_index') }}">back to list</a>
-
-    {{ include('appuser/_delete_form.html.twig') }}
+            {{ include('appuser/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

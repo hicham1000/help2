@@ -3,9 +3,11 @@
 {% block title %}New Univers{% endblock %}
 
 {% block body %}
-    <h1>Create new Univers</h1>
+    <div class="container">
+        <h1>Créer un Univers</h1>
 
-    {{ include('univers/_form.html.twig') }}
+        {{ include('univers/_form.html.twig') }}
 
-    <a href="{{ path('univers_index') }}">back to list</a>
+        <a class="btn btn-light btn-outline-dark me-2" href="{{ path('univers_index') }}">Retour</a>
+    </div>
 {% endblock %}

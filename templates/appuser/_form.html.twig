@@ -1,4 +1,13 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+        <div class="form-group">
+            <label for="label" class="ml-3">Nom d'utilisateur</label>
+                {{ form_widget(form.username) }}
+            <label for="label" class="ml-3">Mot de passe</label>
+                {{ form_widget(form.password) }}
+            <label for="label" class="ml-3">Rôle</label>
+                {{ form_widget(form.roles) }}
+        </div>
+        <button class="btn btn-light btn-outline-dark mb-2">{{ button_label|default('Sauvegarder') }}</button>
+
 {{ form_end(form) }}
