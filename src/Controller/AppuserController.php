@@ -8,6 +8,7 @@ use App\Repository\AppuserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -28,13 +29,16 @@ class AppuserController extends AbstractController
     /**
      * @Route("/new", name="appuser_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserPasswordHasherInterface $encoder): Response
     {
         $appuser = new Appuser();
         $form = $this->createForm(AppuserType::class, $appuser);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $appuser->setPassword(
+                $encoder->hashPassword($appuser, $appuser->getPassword())
+            );
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($appuser);
             $entityManager->flush();
@@ -61,12 +65,20 @@ class AppuserController extends AbstractController
     /**
      * @Route("/{id}/edit", name="appuser_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Appuser $appuser): Response
+    public function edit(Request $request, Appuser $appuser,UserPasswordHasherInterFace $encoder): Response
     {
+        $password = $appuser -> getPassword();
         $form = $this->createForm(AppuserType::class, $appuser);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            if (!empty($appuser->getPassword())) {
+                    $appuser->setPassword(
+                    $encoder->hashPassword($appuser, $appuser->getPassword())
+                );
+            } else {
+                $appuser->setPassword($password);
+            }
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('appuser_index', [], Response::HTTP_SEE_OTHER);
