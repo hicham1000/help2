@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Context;
 use App\Entity\Post;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -45,6 +47,10 @@ class PostType extends AbstractType
                     'placeholder' => 'Mots clés',
                     'class' => 'form-control mb-3'
                 ]
+            ])
+            ->add('context', EntityType::class, [
+                'class' => Context::class,
+                'choice_label' => 'label'
             ])
         ;
     }
