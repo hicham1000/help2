@@ -1,0 +1,23 @@
+# Read the documentation: https://symfony.com/doc/current/bundles/FOSCKEditorBundle/index.html
+
+fos_ck_editor:
+    configs:
+        my_configs:
+            toolbar:  [ 
+            ['Bold', 'Italic', 'Underline','Strike', 'CodeSnippet'],
+            ['BulletedList', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyBlock'] ,
+            [ 'Link'], 
+            ['Format'], 
+            [ 'TextColor', 'BGColor' ]
+            ]
+            extraPlugins: "codesnippet"
+            codeSnippet_theme: 'monokai'
+        plugins:
+            codesnippet:
+                path:     "bundles/fosckeditor/plugins/codesnippet/" # with trailing slash
+                filename: "plugin.js"
+    base_path: "build/ckeditor"
+    js_path:   "build/ckeditor/ckeditor.js"
+twig:
+    form_themes:
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'

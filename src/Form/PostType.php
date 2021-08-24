@@ -4,10 +4,10 @@ namespace App\Form;
 
 use App\Entity\Context;
 use App\Entity\Post;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,19 +23,12 @@ class PostType extends AbstractType
                     'class' => 'form-control form-control-lg mb-3'
                 ]
             ])
-            ->add('content', TextareaType::class, [
+            ->add('content',  CKEditorType::class, [
                 'attr' => [
-                    'class' => 'form-control mb-3'
+                    'class' => 'form-control mb-3', 
+                    'toolbar' => 'basic'
                 ]
             ])
-
-            // ******************  EN AJOUTANT QUILL
-
-            // ->add('content', TextareaType::class, [
-            //     'attr' => [
-            //         'class' => 'form-control mb-3 editor'
-            //     ]
-            // ])
             
             ->add('obsoleted_date', DateType::class, [
                 'attr' => [
