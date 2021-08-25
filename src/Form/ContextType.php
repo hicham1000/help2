@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Context;
+use App\Entity\Univers;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,6 +20,10 @@ class ContextType extends AbstractType
                     'placeholder' => 'Nom du context',
                     'class' => 'form-control form-control-lg mb-3'
                 ]
+            ])
+            ->add('univers', EntityType::class, [
+                'class' => Univers::class,
+                'choice_label' => 'label'
             ])
         ;
     }
