@@ -24,8 +24,16 @@ git branch nom_de_ma_branche OU git checkout nom_de_ma_branche
 composer install
 symfony serve (pour lancer le server symfony )
 
+#-----INSTALATION CKEditor
 
 
+https://symfony.com/bundles/FOSCKEditorBundle/current/installation.html
+
+$ php bin/console ckeditor:install
+$ php bin/console ckeditor:install --release=full
+
+pour des aides : https://symfony.com/bundles/FOSCKEditorBundle/current/usage/ckeditor.html
+$ php bin/console ckeditor:install --help
 
 #-----A CHAQUE FOIS QUE L'ON OUVRE LE PROJET
 
