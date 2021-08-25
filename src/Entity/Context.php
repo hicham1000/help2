@@ -29,6 +29,12 @@ class Context
      */
     private $post;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Univers::class, inversedBy="context")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $univers;
+    
     public function __construct()
     {
         $this->post = new ArrayCollection();
@@ -77,6 +83,18 @@ class Context
                 $post->setContext(null);
             }
         }
+        
+        return $this;
+    }
+
+    public function getUnivers(): ?Univers
+    {
+        return $this->univers;
+    }
+
+    public function setUnivers(?Univers $univers): self
+    {
+        $this->univers = $univers;
 
         return $this;
     }
