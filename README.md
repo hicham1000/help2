@@ -44,6 +44,9 @@ composer install
 
 * npm run dev
 
+Possibilité de problème du au manque du fichier plugins dans 'public/build/ckeditor/plugins/codesnippet'
+
+
 pour des aides :  https://symfony.com/bundles/FOSCKEditorBundle/current/usage/ckeditor.html
                   https://symfony.com/bundles/FOSCKEditorBundle/current/installation.html
 
