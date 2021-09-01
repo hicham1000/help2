@@ -30,15 +30,29 @@ composer install
 
 
 
-
 ## A CHAQUE FOIS QUE L'ON OUVRE LE PROJET
 
 * git pull (récupère les dernières mise à jour)
 
-* vérifier si l'on travaille bien sûr ça branche !
+
+## INSTALATION CKEditor
+
+
+* composer require friendsofsymfony/ckeditor-bundle
+
+* php bin/console ckeditor:install --release=full
+
+* npm run dev
+
+pour des aides :  https://symfony.com/bundles/FOSCKEditorBundle/current/usage/ckeditor.html
+                  https://symfony.com/bundles/FOSCKEditorBundle/current/installation.html
+
+
 
 
 ## A CHAQUE FOIS QUE L'ON VEUX PUSH NOTRE TRAVAIL
+
+* vérifier si l'on travaille bien sûr ça branche !
 
 * git add . (pour tous les fichier que l'on veut envoyer)
 

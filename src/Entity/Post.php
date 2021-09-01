@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PostRepository;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
@@ -20,11 +21,13 @@ class Post
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
      */
     private $content;
 
@@ -40,8 +43,15 @@ class Post
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\NotBlank
      */
     private $keyword;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Context::class, inversedBy="post")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $context;
 
     public function getId(): ?int
     {
@@ -105,6 +115,18 @@ class Post
     public function setKeyword(?string $keyword): self
     {
         $this->keyword = $keyword;
+
+        return $this;
+    }
+
+    public function getContext(): ?Context
+    {
+        return $this->context;
+    }
+
+    public function setContext(?Context $context): self
+    {
+        $this->context = $context;
 
         return $this;
     }

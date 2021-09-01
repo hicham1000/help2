@@ -12,14 +12,11 @@
                 <label for="" class="ml-3">Mots clés</label>   
                     {{ form_widget(formPost.keyword) }}
 
-
-                {#          AJOUT DE QUILL      (ne prend pas en compte l'input 'form.content)      #}
-                {# <div class="editor">
+                <label for="" class="ml-3">Contenu</label>  
                     {{ form_widget(formPost.content) }}
-                </div> #}
-
-                <label for="" class="ml-3">Contenu</label>   
-                    {{ form_widget(formPost.content) }}
+                
+                <label for="" class="ml-3">Choisir un context</label>   
+                {{ form_widget(formPost.context) }}
 
                 {{ form_widget(formPost.obsoleted_date) }}                  
             </div>
@@ -32,35 +29,5 @@
             </div>
         </div>
     {{ form_end(formPost) }}
-
-{% block script %}
-<script>
-    let toolbarOptions = [
-    ['bold', 'italic', 'underline', 'strike'],        // toggled buttons
-    ['blockquote', 'code-block'],
-
-    [{ 'header': 1 }, { 'header': 2 }],               // custom button values
-    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-    [{ 'script': 'sub'}, { 'script': 'super' }],      // superscript/subscript
-    [{ 'indent': '-1'}, { 'indent': '+1' }],          // outdent/indent
-    [{ 'direction': 'rtl' }],                         // text direction
-
-    [{ 'size': ['small', false, 'large', 'huge'] }],  // custom dropdown
-    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-
-    [{ 'color': [] }, { 'background': [] }],          // dropdown with defaults from theme
-    [{ 'font': [] }],
-    [{ 'align': [] }],
-
-    ['clean']                                         // remove formatting button
-];
-let quill = new Quill('.editor', {
-        modules: {
-        toolbar: toolbarOptions
-        },
-        theme: 'snow'
-    });
-</script>
-{% endblock %}
 
 {% endblock %}

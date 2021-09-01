@@ -22,7 +22,7 @@
                     <td>{{ appuser.id }}</td>
                     <td>{{ appuser.username }}</td>
                     <td>{{ appuser.roles ? appuser.roles|json_encode : '' }}</td>
-                    <td>{{ appuser.password }}</td>
+                    <td>{{ appuser.password|slice(0, 20) ~ ' .....'  }}</td>
                     <td>
                         <a class="btn btn-light btn-outline-dark me-2" href="{{ path('appuser_show', {'id': appuser.id}) }}">Voir</a>
                         <a class="btn btn-light btn-outline-dark me-2" href="{{ path('appuser_edit', {'id': appuser.id}) }}">Modifier</a>
