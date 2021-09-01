@@ -6,4 +6,8 @@
 <div class="container bg-danger">
     <h1>Ceci est la page d'acceuil</h1>
 </div>
+
+{# {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <p>Email: {{ app.user.username }}</p>
+{% endif %} #}
 {% endblock %}
