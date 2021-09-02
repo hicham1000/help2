@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Appuser;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -24,6 +25,18 @@ class AppuserType extends AbstractType
             ->add('password', PasswordType::class, [
                 'attr' => [
                     'placeholder' => 'Mot de passe',
+                    'class' => 'form-control form-control-lg mb-3'
+                ]
+            ])
+            ->add('firstname', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'firstname',
+                    'class' => 'form-control form-control-lg mb-3'
+                ]
+            ])
+            ->add('lastname', TextType::class, [
+                'attr' => [
+                    'placeholder' => 'lastname',
                     'class' => 'form-control form-control-lg mb-3'
                 ]
             ])
