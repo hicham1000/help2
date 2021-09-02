@@ -50,7 +50,7 @@ class PostController extends AbstractController
             'editMode' => $post->getId() !== null
         ]);
     }
-  /**
+    /**
      * @Route("/post/{id}/modify", name="post_modify")
      */
 
@@ -71,5 +71,4 @@ class PostController extends AbstractController
             'editMode' => $post->getId() !== null
         ]);
     }
-    
 }
