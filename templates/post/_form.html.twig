@@ -5,28 +5,47 @@
     {{ form_start(formPost) }}
         <div class="p-2 container">
             <h2 class="my-3">Ajout d'article</h2>
-            <div class="form-group">
-                <label for="" class="ml-3">Titre</label>
-                    {{ form_widget(formPost.title) }}
+            <form>
+                <div class="form-group">
+                    <label for="post_context" class="ml-3">Choisissez un context</label>   
+                        {{ form_widget(formPost.context) }}
+                </div>
 
-                <label for="" class="ml-3">Mots clés</label>   
-                    {{ form_widget(formPost.keyword) }}
+                <div class="form-group">
+                    <label for="" class="ml-3">Titre</label>
+                        {{ form_widget(formPost.title) }}
+                </div>
 
-                <label for="" class="ml-3">Contenu</label>  
-                    {{ form_widget(formPost.content) }}
-                
-                <label for="" class="ml-3">Choisir un context</label>   
-                {{ form_widget(formPost.context) }}
+                <div class="form-group">
+                    <label for="" class="ml-3">Mots clés</label>   
+                        {{ form_widget(formPost.keyword) }}
+                </div>
 
-                {{ form_widget(formPost.obsoleted_date) }}                  
-            </div>
+                <div class="form-group">
+                    <label for="" class="ml-3">Contenu</label>  
+                        {{ form_widget(formPost.content) }}
+                </div>
 
-            <div class="text-center">
-                <button class="btn btn-dark m-3" type="submit">
-                    {% if editMode %} Modifier {% else %} Ajouter {% endif %}
-                </button>
-                <a class="btn btn-dark m-3" href="{{ path('post') }}">Annuler</a>
-            </div>
+                    {{ form_widget(formPost.obsoleted_date) }}                  
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-dark m-3" type="submit">
+                        {% if editMode %} Modifier {% else %} Ajouter {% endif %}
+                    </button>
+                    <a class="btn btn-dark m-3" href="{{ path('post') }}">Annuler</a>
+                </div>
+                {# <div class="form-group container">
+                    <label for="exampleFormControlSelect1">Example select</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div> #}
+            </form>
         </div>
     {{ form_end(formPost) }}
 
