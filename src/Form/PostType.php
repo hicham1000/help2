@@ -20,13 +20,12 @@ class PostType extends AbstractType
             ->add('title', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Titre de l\'article',
-                    'class' => 'form-control form-control-lg mb-3'
+                    'class' => 'form-control form-control-lg mb-4'
                 ]
             ])
             ->add('content',  CKEditorType::class, [
                 'attr' => [
-                    'class' => 'form-control mb-3', 
-                    'toolbar' => 'basic'
+                    'class' => 'form-control mb-4', 
                 ]
             ])
             
@@ -38,12 +37,16 @@ class PostType extends AbstractType
             ->add('keyword', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Mots clés',
-                    'class' => 'form-control mb-3'
+                    'class' => 'form-control form-control-lg mb-4'
                 ]
             ])
             ->add('context', EntityType::class, [
                 'class' => Context::class,
-                'choice_label' => 'label'
+                'choice_label' => 'label',
+                'attr' => [
+                    'class' => 'form-control mb-4',
+                    'id' => 'selectContext'
+                ]
             ])
         ;
     }
