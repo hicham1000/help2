@@ -2,6 +2,8 @@
 
 namespace App\Form;
 
+use App\Entity\Context;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -22,19 +24,17 @@ class SearchType extends AbstractType
                     'class' => 'form-control me-2'
                 ]
             ])
-            ->add('context', ChoiceType::class, [
-                'attr' => [
-                    'class' => 'btn btn-outline-light me-2 dropdown-toggle'
-                ],
-                'choices' => [
-                    'SQL' => 'sql',
-                    'Symfony' => 'symfony',
-                ],
+            ->add('context', EntityType::class, [
+                'class' => Context::class,
+                'choice_label' => 'label',
                 'label' => false,
-            ])
-            ->add('send', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-outline-light me-2'
+                ]
+            ])
+            ->add('rechercher', SubmitType::class, [
+                'attr' => [
+                    'class' => 'btn btn-outline-light me-2',
                 ]
             ]);
         ;
