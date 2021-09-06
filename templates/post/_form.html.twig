@@ -5,7 +5,7 @@
     {{ form_start(formPost) }}
         <div class="p-2 container">
             <h2 class="my-3">Ajout d'article</h2>
-            <form>
+            {# <form> #}
                 <div class="form-group">
                     <label for="post_context" class="ml-3">Choisissez un context</label>   
                         {{ form_widget(formPost.context) }}
@@ -35,17 +35,6 @@
                     </button>
                     <a class="btn btn-dark m-3" href="{{ path('post') }}">Annuler</a>
                 </div>
-                {# <div class="form-group container">
-                    <label for="exampleFormControlSelect1">Example select</label>
-                    <select class="form-control" id="exampleFormControlSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div> #}
-            </form>
         </div>
     {{ form_end(formPost) }}
 
