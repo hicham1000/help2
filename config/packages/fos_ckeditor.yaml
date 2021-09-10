@@ -11,7 +11,7 @@ fos_ck_editor:
             [ 'TextColor', 'BGColor' ]
             ]
             extraPlugins: "codesnippet"
-            codeSnippet_theme: 'monokai'
+            codeSnippet_theme: 'monokai_sublime'
         plugins:
             codesnippet:
                 path:     "bundles/fosckeditor/plugins/codesnippet/" # with trailing slash
