@@ -1,16 +1,3 @@
-{# {% extends 'base.html.twig' %}
-
-{% block title %}moncompte{% endblock %}
-
-{% block body %}
-<div class="container mt-5">
-
-    <h1>Mon compte  </h1>
-    <h2>le compte de: {{app.user.getFirstname()}} {{app.user.getLastname()}}<h2>
-    {{ form(form)}}
-    
-</div>
-{% endblock %} #}
 {% extends 'base.html.twig' %}
 
 {% block title %} Mon compte {% endblock %}
@@ -18,10 +5,9 @@
 {% block body %}
 	<div class=" container mt-5">
 		<div>
-			<h1>Modification du profil de : {{ app.user.firstname }} {{ app.user.lastname }}
-			</h1>
+			<h1>Modification du profil de : {{ app.user.firstname }} {{ app.user.lastname }}</h1>
             <div class="form-group">
-                {{ form(form) }}
+            {{ include('appuser/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
             </div>
 		</div>
 	</div>
