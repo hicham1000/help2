@@ -10,9 +10,17 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Security;
 
 class AppuserType extends AbstractType
 {
+    private $security;
+
+    public function __construct(Security $security)
+    {
+        $this->security = $security;
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -39,18 +47,20 @@ class AppuserType extends AbstractType
                     'placeholder' => 'lastname',
                     'class' => 'form-control form-control-lg mb-3'
                 ]
-            ])
-            ->add('roles' ,ChoiceType::class, [
-                'choices' => [
-                    'Administrateur' => 'ROLE_ADMIN',
-                    'Contributeur' => 'ROLE_CONTRIBUTOR'
-                ],
-                'multiple' => true,
-                'attr' => [
-                    'class' => 'form-control form-control-lg mb-3'
-                ]
-            ])
-        ;
+                ]);
+        
+        if ($this->security->isGranted('ROLE_ADMIN')) {
+            $builder->add('roles' ,ChoiceType::class, [
+                    'choices' => [
+                        'Administrateur' => 'ROLE_ADMIN',
+                        'Contributeur' => 'ROLE_CONTRIBUTOR'
+                    ],
+                    'multiple' => true,
+                    'attr' => [
+                        'class' => 'form-control form-control-lg mb-3'
+                    ]
+                ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver)

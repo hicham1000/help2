@@ -37,12 +37,12 @@ class Appuser implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $firstname;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $lastname;
 
@@ -140,18 +140,6 @@ class Appuser implements UserInterface, PasswordAuthenticatedUserInterface
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
-
-        return $this;
-    }
-
-    public function getPrénom(): ?string
-    {
-        return $this->prénom;
-    }
-
-    public function setPrénom(string $prénom): self
-    {
-        $this->prénom = $prénom;
 
         return $this;
     }
