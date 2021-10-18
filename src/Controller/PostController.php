@@ -2,7 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
+use App\Form\PostType;
+use App\Repository\PostRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -13,28 +18,57 @@ class PostController extends AbstractController
      */
     public function index(): Response
     {
+
+        $posts = $this->getDoctrine()->getRepository(Post::class)->findAll();
+
         return $this->render('post/index.html.twig', [
-            'controller_name' => 'PostController',
+            "posts" => $posts,
         ]);
     }
       /**
      * @Route("/post/add", name="post_add")
      */
-    public function add(): Response
+    public function post(Request $request): Response
     {
-        return $this->render('post/add.html.twig', [
+        $post = new Post();
+        $form = $this->createForm(PostType::class, $post);
+        $post->setCreatedDate(new DateTime());
+        $post->setObsoletedDate($post->getCreatedDate());
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($post);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('post');
+        }
+
+        return $this->render('post/_form.html.twig', [
             'controller_name' => 'PostController',
+            'formPost' => $form->createView(),
+            'editMode' => $post->getId() !== null
         ]);
     }
-  /**
-     * @Route("/post/modify", name="post_modify")
+    /**
+     * @Route("/post/{id}/modify", name="post_modify")
      */
 
-    public function modify(): Response
+    public function modify(Request $request, Post $post): Response
     {
-        return $this->render('post/modify.html.twig', [
+        $form = $this->createForm(PostType::class, $post);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('post');
+        }
+
+        return $this->render('post/_form.html.twig', [
             'controller_name' => 'PostController',
+            'formPost' => $form->createView(), 
+            'editMode' => $post->getId() !== null
         ]);
     }
-    
 }

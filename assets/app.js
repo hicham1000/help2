@@ -13,3 +13,9 @@ import { Tooltip, Toast, Popover } from 'bootstrap';
 
 // start the Stimulus application
 import './bootstrap';
+
+
+
+// TEST IMPORT DU PLUNGINS CODESNIPPET 
+
+// import '../public/bundles/fosckeditor/plugins/codesnippet/lib/highlight/highlight.pack';

@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(formPost) }}
+        <div class="p-2 container">
+            <h2 class="my-3">Ajout d'article</h2>
+                <div class="form-group">
+                    <label for="post_context" class="ml-3">Choisissez un context</label>   
+                        {{ form_widget(formPost.context) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="ml-3">Titre</label>
+                        {{ form_widget(formPost.title) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="ml-3">Mots clés</label>   
+                        {{ form_widget(formPost.keyword) }}
+                </div>
+
+                <div class="form-group">
+                    <label for="" class="ml-3">Contenu</label>  
+                        {{ form_widget(formPost.content) }}
+                </div>
+
+                    {{ form_widget(formPost.obsoleted_date) }}                  
+                </div>
+
+                <div class="text-center">
+                    <button class="btn btn-dark m-3" type="submit">
+                        {% if editMode %} Modifier {% else %} Ajouter {% endif %}
+                    </button>
+                    <a class="btn btn-dark m-3" href="{{ path('post') }}">Annuler</a>
+                </div>
+        </div>
+    {{ form_end(formPost) }}
+
+{% endblock %}

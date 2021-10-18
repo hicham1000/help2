@@ -1,0 +1,17 @@
+{{ form_start(form) }}
+    <label for="label" class="ml-3">Nom d'utilisateur</label>
+        {{ form_widget(form.username) }}
+    <label for="label" class="ml-3">Mot de passe</label>
+        {{ form_widget(form.password) }}
+
+    <label for="label" class="ml-3">Prénom</label>
+        {{ form_widget(form.firstname) }}
+    <label for="label" class="ml-3">Nom</label>
+        {{ form_widget(form.lastname) }}
+        
+    {% if is_granted('ROLE_ADMIN') %}
+    <label for="label" class="ml-3">Rôle</label>
+        {{ form_widget(form.roles) }}
+    {% endif %}
+    <button class="btn btn-light btn-outline-dark mb-2">{{ button_label|default('Sauvegarder') }}</button>
+{{ form_end(form) }}
