@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Le resultat{% endblock %}
+
+{% block body %}
+  {% for test in tests %}
+    {{ test.title }}
+    {{ test.content }}
+  {% endfor %}
+{% endblock %}

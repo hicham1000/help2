@@ -41,7 +41,7 @@ class SearchController extends AbstractController
     {
         if ($this->connexion === null) {
             $this->connexion = pg_connect(
-                "host=127.0.0.1 port=5432 dbname=help user=superadmin password=Centralecoleweb21"
+                "host=127.0.0.1 port=5432 dbname=help user=ngandon"
             );
         }
         return $this->connexion;
@@ -53,14 +53,17 @@ class SearchController extends AbstractController
         // dump('coucou');
 
         $connexion = $this->connect();
-        dump('coucou');
 
         // $sql = SELECT title, ts_rank(to_tsvector(title), to_tsquery('PSQL')) FROM post WHERE ts_rank(to_tsvector(title), to_tsquery('PSQL')) > 0.01;
         
         $result = pg_query_params($connexion, 'SELECT title, content FROM post WHERE ts_rank(to_tsvector(title), to_tsquery($1)) > 0.01', [$recherche]);
-        var_dump($result);
-        
-        dump($result);
-        return $result;
+        $tests = pg_fetch_all($result);
+
+        dump($tests);
+
+
+        // return $this->render('search/result.html.twig', [
+        //     "tests" => $tests,
+        // ]);
     }
 }
