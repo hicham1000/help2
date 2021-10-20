@@ -24,7 +24,7 @@ class UsersController extends AbstractController
             $em = $this ->getDoctrine()->getManager();
             $em -> persist($user);
             $em -> flush(); 
-            $this->addFlash('message', 'Profile mis à jour');
+            $this->addFlash('success', 'Profile mis à jour');
             
             return $this->redirectToRoute('users/users');
         }

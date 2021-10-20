@@ -12,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Post
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -52,6 +53,12 @@ class Post
      * @ORM\JoinColumn(nullable=false)
      */
     private $context;
+
+    public function __construct($tile, $content, $created_date) {
+        $this->title = $tile;
+        $this->content = $content;
+        $this->created_date = $created_date;
+    }
 
     public function getId(): ?int
     {

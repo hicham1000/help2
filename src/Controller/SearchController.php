@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
 use App\Form\SearchType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SearchController extends AbstractController
 {
     private $connexion;
-
+    private $resultats;
     /**
      * @Route("/search", name="search")
      */
@@ -21,17 +22,17 @@ class SearchController extends AbstractController
         // $user = $this->getUser();
         $recherche = $requestStack->getMainRequest()->query->get('q');
         // Voir la doc de requestStack /!\
-
         $form = $this->createForm(SearchType::class);
         $form->handleRequest($requestStack->getMainRequest());
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->search($recherche);
+            $this->resultats = $this->search($recherche);
+            dump($this->resultats);
+            // return $this->redirectToRoute('post');
         }
 
         return $this->render('search/index.html.twig', [
             'form' => $form->createView(),
-
         ]);
     }
 
@@ -50,20 +51,22 @@ class SearchController extends AbstractController
 
     public function search($recherche)
     {
-        // dump('coucou');
-
         $connexion = $this->connect();
 
-        // $sql = SELECT title, ts_rank(to_tsvector(title), to_tsquery('PSQL')) FROM post WHERE ts_rank(to_tsvector(title), to_tsquery('PSQL')) > 0.01;
-        
-        $result = pg_query_params($connexion, 'SELECT title, content FROM post WHERE ts_rank(to_tsvector(title), to_tsquery($1)) > 0.01', [$recherche]);
-        $tests = pg_fetch_all($result);
+        $result = pg_query_params($connexion, 'SELECT * FROM post WHERE ts_rank(to_tsvector(title), to_tsquery($1)) > 0.01', [$recherche]);
+        // dump($result);
+        // dump(pg_fetch_result($result, 3));
+        while ($r = pg_fetch_object($result)) {
+            $resultats[] = new Post(
+                $r->title,
+                $r->content,
+                $r->created_date
+            );
+        }
+        if (isset($resultats)) {
+            return $resultats;
+        }
+        // if (pg_fetch_result($result, 3) !== false) {}
 
-        dump($tests);
-
-
-        // return $this->render('search/result.html.twig', [
-        //     "tests" => $tests,
-        // ]);
     }
 }
