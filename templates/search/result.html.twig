@@ -1,10 +1,41 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Le resultat{% endblock %}
-
-{% block body %}
-  {% for test in tests %}
-    {{ test.title }}
-    {{ test.content }}
+{% if resultats == true %}
+  {% for r in resultats %}
+    <div class="container mt-5">
+      <div class="card shadow-sm mb-5">
+        <div class="card-header d-flex flex-row align-items-center">
+          <h1 class="flex-grow-1 fs-4 ">{{ r.title }}</h1>
+          <a href="{{ path('post_modify', {'id': r.id}) }}" class="text-decoration-none">
+            <button type="button" class="btn btn-sm" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Modifier l'article">
+              <svg width="20" height="20" viewBox="0 0 16 16">
+                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+              </svg>
+            </button>
+          </a>
+          <p class="text-muted pt-3 text-center">{{ r.created_date | date("d/m/Y")}}</p>
+            {#  <p class=" pt-3 text-center">{{ r.obsoleted_date | date("d/m/Y")}}</p>#}
+        </div>
+        <div class="card-body">
+          <div class="content">
+            <p class="texte">
+              {{ r.content| raw }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   {% endfor %}
-{% endblock %}
+{% elseif resultats == [] %}
+  <div class="container mt-5">
+    <h3 class="">Aucun résultat ne correspond à votre recherche</h3>
+    <h6>Suggestions :</h6>
+    <ul>
+      <li>Vérifiez l’orthographe des termes de recherche.</li>
+      <li>Essayez d'autres mots.</li>
+      <li>Utilisez des mots clés plus généraux.</li>
+    </ul>
+  </div>
+{% elseif resultats == 'no search' %}
+  <h3>rechechez</h3>
+{% endif %}
+{{ dump(resultats) }}

@@ -37,12 +37,14 @@ class AppuserType extends AbstractType
                 ]
             ])
             ->add('firstname', TextType::class, [
+                'required'   => false,
                 'attr' => [
                     'placeholder' => 'firstname',
                     'class' => 'form-control form-control-lg mb-3'
                 ]
             ])
             ->add('lastname', TextType::class, [
+                'required'   => false,
                 'attr' => [
                     'placeholder' => 'lastname',
                     'class' => 'form-control form-control-lg mb-3'
