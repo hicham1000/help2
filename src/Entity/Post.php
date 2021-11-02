@@ -54,12 +54,6 @@ class Post
      */
     private $context;
 
-    public function __construct($tile, $content, $created_date) {
-        $this->title = $tile;
-        $this->content = $content;
-        $this->created_date = $created_date;
-    }
-
     public function getId(): ?int
     {
         return $this->id;
