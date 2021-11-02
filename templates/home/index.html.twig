@@ -3,8 +3,7 @@
 {% block title %}HELP{% endblock %}
 
 {% block body %}
-<div class="container bg-danger">
-    <h1>Ceci est la page d'acceuil</h1>
+<div class="container">
+        {{ render(controller('App\\Controller\\SearchController::resultat')) }}
 </div>
-
 {% endblock %}

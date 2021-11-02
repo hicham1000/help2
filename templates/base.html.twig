@@ -71,15 +71,15 @@
         </nav>
     </header>
     {% endblock %}
+
     {% block body %}
     {% endblock %}
-    <footer class="container d-flex">
-        {% block footer %}
-            <p class="p-2"> Copyright ©2021 </p>
-            <p class="p-2"> Help! </p>
-        {% endblock %}
-    </footer>
-
+    <nav class="navbar fixed-bottom navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"></a>
+            <span class="p-2"> Copyright ©2021 </span><span class="p-2"> Help! </span>
+        </div>
+    </nav>
 </body>
 
 {% block javascripts %}

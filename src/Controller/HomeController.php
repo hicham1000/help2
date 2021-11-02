@@ -24,7 +24,6 @@ class HomeController extends AbstractController
      */
     public function index(HttpFoundationRequest $request): Response
     {
-        // dump($request->query->get('q'));
 
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
