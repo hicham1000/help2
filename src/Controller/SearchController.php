@@ -38,9 +38,7 @@ class SearchController extends AbstractController
     public function connect()
     {
         if ($this->connexion === null) {
-            $this->connexion = pg_connect(
-                "host=127.0.0.1 port=5432 dbname=help user=ngandon"
-            );
+            $this->connexion = pg_connect($_ENV['DATABASE_URI']);
         }
         return $this->connexion;
     }
@@ -50,8 +48,9 @@ class SearchController extends AbstractController
     {
         $connexion = $this->connect();
 
-        $result = pg_query_params($connexion, 'SELECT * FROM post WHERE ts_rank(to_tsvector(title), to_tsquery($1)) > 0.01', [$recherche]);
-        $resultats = pg_fetch_all($result);
+        $resultats = pg_query_params($connexion, 'SELECT * FROM post WHERE ts_rank(to_tsvector(title), to_tsquery($1)) > 0.01', [$recherche]);
+        $resultats = pg_fetch_all($resultats);
+
         return $resultats;
     }
 
