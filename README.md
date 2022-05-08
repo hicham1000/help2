@@ -1,5 +1,9 @@
 # HELP
+## pour ouvrir le serveur 
+* php -S localhost:8000 -t public/
+
 ## Commandes à effectuer pour que webpack/bootsrtap fonctionnent:
+
 
 * composer require symfony/webpack-encore-bundle
 
